@@ -12,6 +12,10 @@ type InlineControlWithPlaceHolder(docExpr: Expr<Doc>, doc: Doc) =
     [<System.NonSerialized>]
     let doc = doc
 
+    // this is needed because WebSharper.Web.Control.GetBodyNode looks at Body property on current type
+    [<JavaScript>]
+    override this.Body = base.Body
+
     interface INode with
         member this.Write (ctx, w) =
             w.Write("""<div id="{0}">""", this.ID)
