@@ -25,5 +25,5 @@ type ClientDoc =
             ConcreteDoc(INodeDoc (new InlineControlWithPlaceHolder (Expr.Cast<Doc> docExpr, doc :?> Doc))) :> Doc
         | _ ->
             // value missing, nothing to render on server
-            ConcreteDoc(INodeDoc (new InlineControlWithPlaceHolder (expr, Doc.Empty))) :> Doc        
+            Html.client expr
 
